@@ -63,8 +63,8 @@ const replaceRecursive = (text: string, left: string, right: string, replacer: (
   return text;
 };
 
-function replaceAt(string: string, index: number, length: number, replacement: string): string {
-  return string.substr(0, index) + replacement + string.substr(index + length);
+function replaceAt(inputString: string, index: number, length: number, replacement: string): string {
+  return inputString.substr(0, index) + replacement + inputString.substr(index + length);
 }
 
 export const preprocess = (inputString: string) => {
