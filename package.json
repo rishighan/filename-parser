@@ -1,6 +1,6 @@
 {
   "name": "filename-parser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A utility to extract comic book issue name, number, year and other components from a file name.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -177,7 +177,7 @@ export const tokenize = (inputString: string) => {
   const queryObject = {
     comicbook_identifier_tokens: {
       inputString,
-      parsedIssueNumber: parseInt(parsedIssueNumber, 10),
+      parsedIssueNumber: isNaN(parseInt(parsedIssueNumber, 10)) ? 0 : parseInt(parsedIssueNumber, 10),
       subtitle,
     },
     years: yearMatches,
