@@ -39,7 +39,7 @@ import xregexp from 'xregexp';
 import { MatchArray } from 'xregexp/types';
 import voca from 'voca';
 import { xor, isEmpty, isNull, isNil } from 'lodash';
-
+// tokenization
 nlp.extend(sentences);
 nlp.extend(numbers);
 nlp.extend(dates);
