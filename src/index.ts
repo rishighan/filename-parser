@@ -211,14 +211,13 @@ export const refineQuery = (inputString: string) => {
   const queryObj = tokenize(inputString);
   const removedYears = xor(queryObj.sentence_tokens.normalized, queryObj.years);
   return {
-    searchParams: {
-      searchTerms: {
-        name: queryObj.comicbook_identifier_tokens.inputString.trim(),
-        number: queryObj.comicbook_identifier_tokens.parsedIssueNumber,
-        year: queryObj.years?.toString(),
-        subtitle: queryObj.comicbook_identifier_tokens.subtitle,
-      },
+    inferredIssueDetails: {
+      name: queryObj.comicbook_identifier_tokens.inputString.trim(),
+      number: queryObj.comicbook_identifier_tokens.parsedIssueNumber,
+      year: queryObj.years?.toString(),
+      subtitle: queryObj.comicbook_identifier_tokens.subtitle,
     },
+
     meta: {
       queryObj,
       tokenized: removedYears,
