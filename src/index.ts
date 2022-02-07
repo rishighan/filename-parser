@@ -177,7 +177,7 @@ export const tokenize = (inputString: string) => {
   const queryObject = {
     comicbook_identifier_tokens: {
       inputString,
-      parsedIssueNumber: Number(parsedIssueNumber),
+      parsedIssueNumber: parseInt(parsedIssueNumber, 10),
       subtitle,
     },
     years: yearMatches,
