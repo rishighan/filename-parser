@@ -5,17 +5,19 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm test",
+    "test": "jest",
     "build": "tsc",
     "format": "prettier --write \"src/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rishighan/filename-parser.git"
@@ -34,6 +36,7 @@
   },
   "homepage": "https://github.com/rishighan/filename-parser#readme",
   "dependencies": {
+    "babel-jest": "^27.5.1",
     "compromise": "^13.11.4",
     "compromise-dates": "^2.2.1",
     "compromise-numbers": "^1.4.0",
@@ -44,13 +47,18 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
+    "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.178",
     "@types/voca": "^1.4.2",
+    "jest": "^27.5.1",
     "prettier": "^2.5.1",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.3"
   }
 }
