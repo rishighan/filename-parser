@@ -102,23 +102,23 @@ export const tokenize = (inputString: string) => {
   }
 
   const readingListIndicators = inputString.match(/^\s*\d+(\.\s+?|\s*-?\s*)/gim);
-
+  // Remove shit numbers from the beginning of a filename
+  inputString = voca.replace(inputString, /^[\d]+/gi, '');
   // Issue numbers
-  let issueNumbers = '';
   let parsedIssueNumber = '';
 
   // https://regex101.com/r/fgmd22/1
-  const issues = inputString.match(/(^|[_\s#])(-?\d*\.?\d\w*)/gi);
+  const detectedNumbers = inputString.match(/(^|[_\s#])(-?\d*\.?\d\w*)/gi);
   const tpbIssueNumber = inputString.match(/((\s|\|-|:)v?\d?\s)/gim);
+  // Remove numbers from the beginning of the filename
   inputString.replace(/(\b(vo?l?u?m?e?)\.?)(\s*-|\s*_)?(\s*[0-9]+[.0-9a-z]*)/gi, '');
 
   // find the matches for a tpb "issue" number such as v2
   if (!isNil(tpbIssueNumber)) {
     parsedIssueNumber = tpbIssueNumber[0].trim();
   }
-  if (!isEmpty(issues) && !isNull(issues)) {
-    issueNumbers = issues[0].trim();
-    const matches = extractNumerals(issueNumbers);
+  if (!isEmpty(detectedNumbers) && !isNull(detectedNumbers)) {
+    const matches = extractNumerals(inputString);
     // if we parsed out some potential issue numbers, designate the LAST
     // (rightmost) one as the actual issue number, and remove it from the name
 
@@ -126,7 +126,6 @@ export const tokenize = (inputString: string) => {
       parsedIssueNumber = matches[0].pop();
     }
   }
-
   inputString = voca.replace(inputString, parsedIssueNumber, '');
 
   // filter out anything at the end of the title in parantheses

@@ -1,6 +1,9 @@
-import {refineQuery} from "../src/index";
+import {tokenize} from "../src/index";
 
-test("parses variations of \'volume\' term from file name", () => {
-    const foo = refineQuery("201112 Fear Itself - Hulk vs Dracula 003");
-    console.log(foo);
+test("Removes shit numbers from the beginning of a filename", () => {
+    const tokenizedString = tokenize("201112 Spider-Island - Heroes for Hire 001");
+    console.log(tokenizedString);
+    expect(tokenizedString.comicbook_identifier_tokens.inputString.trim()).toEqual("Spider-Island");
+    expect(tokenizedString.comicbook_identifier_tokens.parsedIssueNumber).toEqual(1);
+    expect(tokenizedString.comicbook_identifier_tokens.subtitle.trim()).toEqual("Heroes for Hire");
 });
